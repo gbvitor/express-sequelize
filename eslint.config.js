@@ -5,17 +5,19 @@ import globals from "globals";
 export default [
     {
         languageOptions: {
-            globals: globals.node,
+            globals: {
+                ...globals.node,
+            },
             ecmaVersion: "latest",
-            envs: ["node"],
             sourceType: "module",
         },
+        envs: ["node"],
         rules: {
             "no-undef": "error",
             "no-unused-vars": ["error", { args: "none" }],
             "no-console": ["error", { allow: ["warn", "error"] }],
-            "line-break-style": ["error", "windows"],
-            ident: ["error", 2],
+            "linebreak-style": ["error", "windows"],
+            indent: ["error", 4],
             quotes: ["error", "double"],
             semi: ["error", "always"],
         },
