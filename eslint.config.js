@@ -1,17 +1,16 @@
-import pluginJs from "@eslint/js";
-import globals from "globals";
+const globals = require("globals");
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [
+module.exports = [
     {
         languageOptions: {
             globals: {
                 ...globals.node,
             },
             ecmaVersion: "latest",
-            sourceType: "module",
+            sourceType: "commonjs",
         },
-        envs: ["node"],
+
         rules: {
             "no-undef": "error",
             "no-unused-vars": ["error", { args: "none" }],
@@ -22,5 +21,4 @@ export default [
             semi: ["error", "always"],
         },
     },
-    pluginJs.configs.recommended,
 ];
