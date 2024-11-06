@@ -21,21 +21,12 @@ yarn-error.log*
 # Arquivos de cobertura de testes (caso use testes automatizados)
 coverage/
 
-# Arquivos gerados pelo Sequelize
-.sequelizecr
-
-# Banco de dados SQLite
-database.sqlite
-
 # Arquivos de configuração do editor
 .vscode/
 
 # Arquivos de backup de edição (ex: arquivos temporários)
 *.swp
 *~
-
-# Arquivos de configuração do ESLint
-eslint.config.js
 
 # Outros arquivos sensíveis ou temporários
 package-lock.json
