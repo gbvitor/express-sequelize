@@ -18,7 +18,17 @@ class Service {
     }
 
     async atualiza(id, item) {
-        return await dataSource[this.model].update(item, { where: { id } });
+        const resuldadosAtualizados = await dataSource[this.model].update(
+            item,
+            {
+                where: { id },
+            }
+        );
+        if (resuldadosAtualizados.length === 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
     async exclui(id) {
         return await dataSource[this.model].destroy({ where: { id } });

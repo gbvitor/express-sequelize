@@ -19,6 +19,11 @@ class Controller {
         try {
             const { id } = req.params;
             const umRegistro = await this.entityService.pegaPorId(Number(id));
+            if (!umRegistro) {
+                return res
+                    .status(404)
+                    .json({ message: "Registro não encontrado" });
+            }
             return res.status(200).json(umRegistro);
         } catch (error) {
             return res
@@ -43,7 +48,15 @@ class Controller {
                 Number(id),
                 req.body
             );
-            return res.status(200).json(registroAtualizado);
+            if (!registroAtualizado) {
+                return res
+                    .status(404)
+                    .json({ message: "Registro não encontrado" });
+            } else {
+                return res
+                    .status(200)
+                    .json({ message: "Registro atualizado com sucesso" });
+            }
         } catch (error) {
             return res
                 .status(500)
