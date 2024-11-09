@@ -17,4 +17,12 @@ router.post("/pessoas", (req, res) => {
     pessoaController.criaRegistro(req, res);
 });
 
+router.put("/pessoas/:id", (req, res) => {
+    pessoaController.atualizaRegistro(req, res);
+});
+
+router.delete("/pessoas/:id", (req, res) => {
+    pessoaController.deletaRegistro(req, res);
+});
+
 module.exports = router;

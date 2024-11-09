@@ -18,7 +18,7 @@ class Controller {
     async pegaUm(req, res) {
         try {
             const { id } = req.params;
-            const umRegistro = await this.entityService.pegaPorId(id);
+            const umRegistro = await this.entityService.pegaPorId(Number(id));
             return res.status(200).json(umRegistro);
         } catch (error) {
             return res
@@ -34,6 +34,33 @@ class Controller {
             return res
                 .status(500)
                 .json({ message: "Erro ao cadastrar um novo registro" });
+        }
+    }
+    async atualizaRegistro(req, res) {
+        try {
+            const { id } = req.params;
+            const registroAtualizado = await this.entityService.atualiza(
+                Number(id),
+                req.body
+            );
+            return res.status(200).json(registroAtualizado);
+        } catch (error) {
+            return res
+                .status(500)
+                .json({ message: "Erro ao atualizar um registro" });
+        }
+    }
+    async deletaRegistro(req, res) {
+        try {
+            const { id } = req.params;
+            await this.entityService.exclui(Number(id));
+            return res
+                .status(200)
+                .json({ message: "Registro deletado com sucesso" });
+        } catch (error) {
+            return res
+                .status(500)
+                .json({ message: "Erro ao deletar um registro" });
         }
     }
 }
