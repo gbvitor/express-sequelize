@@ -3,7 +3,7 @@
 module.exports = {
     development: {
         dialect: "sqlite",
-        storage: "./database.sqlite",
+        storage: "./src/database/database.sqlite",
         logging: false, // desativar logs
     },
     test: {
